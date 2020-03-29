@@ -4,7 +4,7 @@
 <img src='https://img.shields.io/github/license/Aceik/ImageCompression.svg' />
 <img src='https://img.shields.io/github/languages/code-size/Aceik/ImageCompression.svg' />
 
-Compress your Sitecore library with the Tiny PNG API. Crunch image to improve you page speed. 
+Compress your Sitecore library with the Tiny PNG API. Crunch images to improve you page speed. 
 
 ## What does it do ?
 
@@ -28,14 +28,16 @@ Yes, once installed you can leave the scehduled task running in the background a
 
 ## Getting Started Steps
 1) Installation
-- Option 1: [via Sitecore Package](https://github.com/Aceik/Sitecore-Speedy/wiki/00-Installation-Via-Sitecore-Package)
-- Option 2: [Via Source](https://github.com/Aceik/Sitecore-Speedy/wiki/01--Installation-Via-Helix-Source)
-
-### Sitecore Settings
-* [Global Settings](https://github.com/Aceik/Sitecore-Speedy/wiki/06---Global-Settings)
+- Option 1: via Sitecore Package -- Look for the installable package in the releases of this repo.
+- Option 2: Via Source
 
 ## References and Inspiration
 
 * [Recommend this is used alongside Sitecore Speedy for SXA](https://github.com/Aceik/Sitecore-Speedy)
 * [Tiny PNG](https://tinypng.com/)
 * [Tiny PNG API](https://tinypng.com/developers)
+
+
+## Other Implementation of Sitecore and Tiny PNG
+* https://jockstothecore.com/optimizing-images-sitecore/  (Does the crunch via powershell)
+* https://sitecoremaster.github.io/Sitecore-Media-Library-Enhancements/   (Does the crunch on upload)
