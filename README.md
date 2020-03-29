@@ -4,7 +4,7 @@
 <img src='https://img.shields.io/github/license/Aceik/ImageCompression.svg' />
 <img src='https://img.shields.io/github/languages/code-size/Aceik/ImageCompression.svg' />
 
-Compress your Sitecore library with the Tiny PNG API. Crunch image to improve you page speed. 
+Compress your Sitecore library with the Tiny PNG API. Crunch images to improve you page speed. 
 
 ## What does it do ?
 
