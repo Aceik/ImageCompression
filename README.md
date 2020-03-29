@@ -14,22 +14,7 @@ Connect you media library to the Tiny PNG API and optimise your images in the ba
 Introduces a button for each image in the Sitecore tab to do this as you go or performs the compression of all images via a scheduled task. 
 Shows the before and after results in a Image meta data field, so that you can tell the difference and also know which images have been processed. 
 
-[Results demo screencast ... click here](https://www.youtube.com/watch?v=S8aIy-dK75g&feature=youtu.be) 
-
-[Installation and Usage on a developer machine screencast ... click here](https://youtu.be/-1SA12qax1g)
-
-Results: 
-
-<img src="https://aceiksolutions.files.wordpress.com/2019/07/results.png?w=768"/>
-
-Before / After (Full Screenshots):
-
-<a target="_blank" href="https://aceiksolutions.files.wordpress.com/2019/07/after.png?w=1800"><img src="https://aceiksolutions.files.wordpress.com/2019/07/after.png?w=200"/></a>
-<a target="_blank" href="https://aceiksolutions.files.wordpress.com/2019/07/before.png?w=1800"><img src="https://aceiksolutions.files.wordpress.com/2019/07/before.png?w=200"/></a>
-
 ## What does this resolve in regard to Page Speed ?
-
-In order to get great page speed scores there are several aspects you need to address. [Read more here.](https://github.com/Aceik/Sitecore-Speedy/wiki/Extra-Info---Page-Speed-Considerations)
 
 This module addresses the image optimisation component of page speed. The aim is to compress your images to sizes that google will appreciate.
 
