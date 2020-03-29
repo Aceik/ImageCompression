@@ -28,11 +28,8 @@ Yes, once installed you can leave the scehduled task running in the background a
 
 ## Getting Started Steps
 1) Installation
-- Option 1: [via Sitecore Package](https://github.com/Aceik/Sitecore-Speedy/wiki/00-Installation-Via-Sitecore-Package)
-- Option 2: [Via Source](https://github.com/Aceik/Sitecore-Speedy/wiki/01--Installation-Via-Helix-Source)
-
-### Sitecore Settings
-* [Global Settings](https://github.com/Aceik/Sitecore-Speedy/wiki/06---Global-Settings)
+- Option 1: via Sitecore Package -- Look for the installable package in the releases of this repo.
+- Option 2: Via Source
 
 ## References and Inspiration
 
