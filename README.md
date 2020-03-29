@@ -1,5 +1,3 @@
-![Sitecore Image Compression]
-
 ## Sitecore Image Compression (Helix Format) 
 <img src='https://img.shields.io/github/tag/Aceik/ImageCompression.svg' />
 <img src='https://img.shields.io/github/issues/Aceik/ImageCompression.svg' />
@@ -25,7 +23,7 @@ Yes, once installed you can leave the scehduled task running in the background a
 ## Installation prerequisites and notes
 
 1)  <img src="https://img.shields.io/badge/requires-sitecore-blue.svg?style=flat-square" alt="requires sitecore">
-  * <img src="https://img.shields.io/badge/supports-sitecore%20v9.1-green.svg?style=flat-square" alt="requires sitecore 9.3">
+  * <img src="https://img.shields.io/badge/supports-sitecore%20v9.3-green.svg?style=flat-square" alt="requires sitecore 9.3">
   * <img src="https://img.shields.io/badge/supports-helix-green.svg?style=flat-square" alt="requires Helix Foundation"/>
 
 ## Getting Started Steps
