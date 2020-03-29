@@ -33,6 +33,9 @@ namespace Sitecore.Foundation.ImageCompression.Services
 
         public bool ShouldContinue { get; set; }
 
+        public static readonly string[] SizeSuffixes =
+            { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+
         public TinyPngApiGateway()
         {
             ShouldContinue = true;
@@ -71,7 +74,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
                 if (string.IsNullOrEmpty(response.Data.Location))
                     return null;
 
-                Sitecore.Diagnostics.Log.Info($"Image Uploaded to Tiny PNG {response.Data.Location} | Compression count so far: {GetHeader(response, COMPRESSION_COUNT)}", this);
+                Diagnostics.Log.Info($"Image Uploaded to Tiny PNG {response.Data.Location} | Compression count so far: {GetHeader(response, COMPRESSION_COUNT)}", this);
 
                 return response.Data;
             }
@@ -147,11 +150,8 @@ namespace Sitecore.Foundation.ImageCompression.Services
             {
                 byte [] responseData = client.DownloadData(request);
                 string sizeBefore = currentItem.InnerItem.Fields["Size"].Value;
-
                 UpdateImageFile(currentItem, responseData);
-
                 string sizeAfter = currentItem.InnerItem.Fields["Size"].Value;
-
                 UpdateImageInformation(currentItem, sizeBefore, sizeAfter);
             }
             catch (Exception ex)
@@ -185,7 +185,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             string sizeAfterStr = $"{SizeSuffix(Int64.Parse(sizeAfter))}";
             var compressionEntry = $"{ImageCompressionConstants.Messages.OPTIMISED_BY} | Before: {sizeBeforeStr} | After: {sizeAfterStr}";
             currentItem.InnerItem.Fields[ImageCompressionSettings.GetInformationField()].Value = compressionEntry;
-            Sitecore.Diagnostics.Log.Info($"{currentItem.ID} {currentItem.Name} {compressionEntry}", "TinyPng");
+            Diagnostics.Log.Info($"{currentItem.ID} {currentItem.Name} {compressionEntry}", "TinyPng");
             currentItem.InnerItem.Editing.EndEdit();
         }
 
@@ -194,8 +194,6 @@ namespace Sitecore.Foundation.ImageCompression.Services
             return (Int32.Parse(bytes) / 1024f) / 1024f;
         }
 
-        static readonly string[] SizeSuffixes =
-                   { "bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
         static string SizeSuffix(Int64 value, int decimalPlaces = 1)
         {
             if (decimalPlaces < 0) { throw new ArgumentOutOfRangeException("decimalPlaces"); }
