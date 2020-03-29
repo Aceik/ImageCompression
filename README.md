@@ -39,3 +39,8 @@ Yes, once installed you can leave the scehduled task running in the background a
 * [Recommend this is used alongside Sitecore Speedy for SXA](https://github.com/Aceik/Sitecore-Speedy)
 * [Tiny PNG](https://tinypng.com/)
 * [Tiny PNG API](https://tinypng.com/developers)
+
+
+## Other Implementation of Sitecore and Tiny PNG
+* https://jockstothecore.com/optimizing-images-sitecore/  (Does the crunch via powershell)
+* https://sitecoremaster.github.io/Sitecore-Media-Library-Enhancements/   (Does the crunch on upload)
