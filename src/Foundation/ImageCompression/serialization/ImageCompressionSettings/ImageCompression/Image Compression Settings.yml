@@ -7,7 +7,7 @@ DB: master
 SharedFields:
 - ID: "0b4c8d6b-6960-45f6-ab53-0e6aad664230"
   Hint: EndpointKey
-  Value: 2dHQGN8PYMj0n0TPcb61wpmMCtN41M0Q
+  Value: 
 - ID: "e6a3cde0-9913-4304-b114-e318ef685c62"
   Hint: EndpointURL
   Value: "https://api.tinify.com/shrink"
