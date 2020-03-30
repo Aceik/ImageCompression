@@ -13,7 +13,7 @@ SharedFields:
   Value: 149
 - ID: "d47ed548-84d5-4622-9886-5cc164727507"
   Hint: Icon
-  Value: Business/32x32/row_add_before.png
+  Value: Apps/32x32/Compession.png
 - ID: "dbbf9ee3-c30e-4456-a81f-ed8c2e8df91b"
   Hint: Click
   Value: "imagecompression:compressviaremote"
