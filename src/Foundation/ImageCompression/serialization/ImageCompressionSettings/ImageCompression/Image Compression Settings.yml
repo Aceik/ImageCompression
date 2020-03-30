@@ -27,6 +27,9 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20200318T124915Z
+    - ID: "41182b5f-bc24-4f87-8097-15f09af7eec1"
+      Hint: ImageCompressionInformationField
+      Value: Keywords
     - ID: "47428684-081a-45b1-9e96-c3c25f11218f"
       Hint: ImageCompressionScheduledTaskEnabled
       Type: Checkbox
