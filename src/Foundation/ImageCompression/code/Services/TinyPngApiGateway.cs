@@ -1,8 +1,4 @@
-﻿//  References: https://github.com/TomTyack/CriticalCSSAPI
-//  Postman Examples: https://www.getpostman.com/collections/f2df62c43496395dbdd8
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,7 +37,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             ShouldContinue = true;
         }
 
-        public string CompressImage(Item currentItem)
+        public virtual string CompressImage(Item currentItem)
         {
             var uploadedImage = SendToTinyForCompression(currentItem);
             if (uploadedImage == null)
@@ -50,7 +46,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             return uploadedImage.Location;
         }
 
-        public ImageUpload SendToTinyForCompression(Item currentItem)
+        public virtual ImageUpload SendToTinyForCompression(Item currentItem)
         {
             var client = new RestClient(ImageCompressionSettings.GetApiEndpoint());
             client.Authenticator = new HttpBasicAuthenticator("Api", ImageCompressionSettings.GetApiEndpointKey());
@@ -86,7 +82,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             return null;
         }
 
-        private string GetHeader(IRestResponse response, string key)
+        protected string GetHeader(IRestResponse response, string key)
         {
             var headers = response.Headers.ToList();
 
@@ -96,7 +92,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
              return headers.Find(x => x.Name == key).Value.ToString();
         }
 
-        private RestRequest CreateUploadRequest(Item currentItem, RestClient client)
+        public virtual RestRequest CreateUploadRequest(Item currentItem, RestClient client)
         {
             var request = new RestRequest(Method.POST);
             request.Parameters.Clear();
@@ -125,7 +121,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             return request;
         }
 
-        public byte[] ReadMediaStream(MediaItem _currentMedia)
+        protected byte[] ReadMediaStream(MediaItem _currentMedia)
         {
             Stream stream = _currentMedia.GetMediaStream();
             long fileSize = stream.Length;
@@ -136,7 +132,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             return buffer;
         }
 
-        public string DownloadImage(MediaItem currentItem, ImageUpload img)
+        public virtual string DownloadImage(MediaItem currentItem, ImageUpload img)
         {
             var client = new RestClient(img.Location);
             client.Authenticator = new HttpBasicAuthenticator("Api", ImageCompressionSettings.GetApiEndpointKey());
@@ -152,7 +148,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
                 string sizeBefore = currentItem.InnerItem.Fields["Size"].Value;
                 UpdateImageFile(currentItem, responseData);
                 string sizeAfter = currentItem.InnerItem.Fields["Size"].Value;
-                UpdateImageInformation(currentItem, sizeBefore, sizeAfter);
+                UpdateImageInformation(currentItem, sizeBefore, sizeAfter, ImageCompressionConstants.Messages.OPTIMISED_BY);
             }
             catch (Exception ex)
             {
@@ -162,14 +158,14 @@ namespace Sitecore.Foundation.ImageCompression.Services
             return "API ISSUE";
         }
 
-        private void RecordError(MediaItem currentItem, string message)
+        protected void RecordError(MediaItem currentItem, string message)
         {
             currentItem.InnerItem.Editing.BeginEdit();
             currentItem.InnerItem.Fields[ImageCompressionSettings.GetInformationField()].Value = message;
             currentItem.InnerItem.Editing.EndEdit();
         }
 
-        private void UpdateImageFile(MediaItem currentItem, byte[] responseData)
+        protected void UpdateImageFile(MediaItem currentItem, byte[] responseData)
         {
             currentItem.BeginEdit();
             Media media = MediaManager.GetMedia(currentItem);
@@ -178,23 +174,23 @@ namespace Sitecore.Foundation.ImageCompression.Services
             currentItem.EndEdit();
         }
 
-        private void UpdateImageInformation(MediaItem currentItem, string sizeBefore, string sizeAfter)
+        protected void UpdateImageInformation(MediaItem currentItem, string sizeBefore, string sizeAfter, string optimisedBy)
         {
             currentItem.InnerItem.Editing.BeginEdit();
             string sizeBeforeStr = $"{SizeSuffix(Int64.Parse(sizeBefore))}";
             string sizeAfterStr = $"{SizeSuffix(Int64.Parse(sizeAfter))}";
-            var compressionEntry = $"{ImageCompressionConstants.Messages.OPTIMISED_BY} | Before: {sizeBeforeStr} | After: {sizeAfterStr}";
+            var compressionEntry = $"{optimisedBy} | Before: {sizeBeforeStr} | After: {sizeAfterStr}";
             currentItem.InnerItem.Fields[ImageCompressionSettings.GetInformationField()].Value = compressionEntry;
-            Diagnostics.Log.Info($"{currentItem.ID} {currentItem.Name} {compressionEntry}", "TinyPng");
+            Diagnostics.Log.Info($"{currentItem.ID} {currentItem.Name} {compressionEntry}", optimisedBy);
             currentItem.InnerItem.Editing.EndEdit();
         }
 
-        static double ConvertBytesToMegabytes(string bytes)
+        public static double ConvertBytesToMegabytes(string bytes)
         {
             return (Int32.Parse(bytes) / 1024f) / 1024f;
         }
 
-        static string SizeSuffix(Int64 value, int decimalPlaces = 1)
+        public static string SizeSuffix(Int64 value, int decimalPlaces = 1)
         {
             if (decimalPlaces < 0) { throw new ArgumentOutOfRangeException("decimalPlaces"); }
             if (value < 0) { return "-" + SizeSuffix(-value); }

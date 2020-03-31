@@ -7,6 +7,7 @@ namespace Sitecore.Foundation.ImageCompression
         public struct Messages
         {
             public static readonly string OPTIMISED_BY = "Optimised by TinyPng";
+            public static readonly string OPTIMISED_BY_KRAKEN = "Optimised by Kraken.io";
         }
 
         public struct TemplateIDs
