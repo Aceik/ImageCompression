@@ -121,8 +121,8 @@ namespace Sitecore.Foundation.ImageCompression.Services
         public UserRequest BuildRequestObject()
         {
             var requestObj = new UserRequest();
-            requestObj.Authentication.ApiKey = "53293608b43b69c7f31f1fb98ea1b830";
-            requestObj.Authentication.ApiSecret = "a6c4a3d7e2d3afb687335a425187e0cd5e9483bc";
+            requestObj.Authentication.ApiKey = "";
+            requestObj.Authentication.ApiSecret = "";
             requestObj.WebP = true;
             requestObj.Lossy = true;
             requestObj.Wait = true;
