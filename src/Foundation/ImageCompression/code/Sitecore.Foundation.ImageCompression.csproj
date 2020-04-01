@@ -48,6 +48,10 @@
     <Compile Include="Command\ImageCompressionRunCommand.cs" />
     <Compile Include="Model\AllTemplatesSearchResultItem.cs" />
     <Compile Include="Model\ImageUpload.cs" />
+    <Compile Include="Model\KrakenHttp\Model\OptimizeWaitResult.cs" />
+    <Compile Include="Model\KrakenHttp\Model\UserRequest.cs" />
+    <Compile Include="Model\KrakenHttp\Model\Authentication.cs" />
+    <Compile Include="Model\KrakenHttp\Model\OptimizeRequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scheduler\SyncImages.cs" />
     <Compile Include="Services\IImageCompressionService.cs" />
@@ -60,6 +64,7 @@
     <Content Include="App_Config\Include\ImageCompression\Foundation\Foundation.ImageCompression.Commands.config" />
     <Content Include="App_Config\Include\ImageCompression\Foundation\Foundation.ImageCompression.Serialization.config" />
     <Content Include="App_Config\Include\ImageCompression\Foundation\Foundation.ImageCompression.Services.config" />
+    <Compile Include="Model\KrakenHttp\Model\Authenaaatication.cs" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
