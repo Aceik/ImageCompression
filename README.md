@@ -1,4 +1,4 @@
-## Sitecore Image Compression (Helix Format) 
+## Sitecore Image Compression and Next-Gen Conversion (Helix Format) 
 <img src='https://img.shields.io/github/tag/Aceik/ImageCompression.svg' />
 <img src='https://img.shields.io/github/issues/Aceik/ImageCompression.svg' />
 <img src='https://img.shields.io/github/license/Aceik/ImageCompression.svg' />
