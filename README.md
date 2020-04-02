@@ -4,21 +4,28 @@
 <img src='https://img.shields.io/github/license/Aceik/ImageCompression.svg' />
 <img src='https://img.shields.io/github/languages/code-size/Aceik/ImageCompression.svg' />
 
-Compress your Sitecore library with the Tiny PNG API. Crunch images to improve you page speed. 
+Compress and Convert the images in your Sitecore media library with the Tiny PNG and Kraken.io. 
+Crunch images to improve you page load times and image payload sizes. 
+Convert images to webp for next generation image format improvements. 
 
 ## What does it do ?
 
-Connect you media library to the Tiny PNG API and optimise your images in the background. 
-Introduces a button for each image in the Sitecore tab to do this as you go or performs the compression of all images via a scheduled task. 
+This module will connect your media library to imaging APIs that optimise and convert your images. 
+Introduces a button for each image in the Sitecore tab to do this as you go or works via via a scheduled task that checks all images. 
 Shows the before and after results in a Image meta data field, so that you can tell the difference and also know which images have been processed. 
 
 ## What does this resolve in regard to Page Speed ?
 
-This module addresses the image optimisation component of page speed. The aim is to compress your images to sizes that google will appreciate.
+This module addresses the image optimisation component of page speed. The aim is to optimise your images to sizes that google will appreciate. Googlie also now recommends using a next-gen image format such as webp, this module also allows you to convert your existing images to that format and to meet the Google Page Speed recommendation. 
 
 ## Is it easy to use ?
 
-Yes, once installed you can leave the scehduled task running in the background and your Sitecore Media Library will be compressed via the Tiny PNG API automatically. 
+Yes, once installed you can leave the scehduled task running in the background and your Sitecore Media Library will be optimised/converted via the API integrations automatically. 
+
+## What does it cost ?
+Depending on your usage you may be able to remain within the free tier of both API's used. 
+Have a look at Tiny PNG and Kraken.io respectively for this information. 
+You can also opt to turn one of that API connections off if you don't want to use it.
 
 ## Installation prerequisites and notes
 
@@ -36,6 +43,8 @@ Yes, once installed you can leave the scehduled task running in the background a
 * [Recommend this is used alongside Sitecore Speedy for SXA](https://github.com/Aceik/Sitecore-Speedy)
 * [Tiny PNG](https://tinypng.com/)
 * [Tiny PNG API](https://tinypng.com/developers)
+* [Google Webp format](https://developers.google.com/speed/webp)
+* [Kraken.io](https://kraken.io/docs/getting-started)
 
 
 ## Other Implementation of Sitecore and Tiny PNG
