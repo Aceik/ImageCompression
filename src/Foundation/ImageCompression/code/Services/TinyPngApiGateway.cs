@@ -148,7 +148,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
                 string sizeBefore = currentItem.InnerItem.Fields["Size"].Value;
                 UpdateImageFile(currentItem, responseData);
                 string sizeAfter = currentItem.InnerItem.Fields["Size"].Value;
-                UpdateImageInformation(currentItem, sizeBefore, sizeAfter, ImageCompressionConstants.Messages.OPTIMISED_BY);
+                UpdateImageInformation(currentItem, sizeBefore, sizeAfter, ImageCompressionConstants.Messages.OPTIMISED_BY, ImageCompressionSettings.GetInformationField());
             }
             catch (Exception ex)
             {
@@ -158,7 +158,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             return "API ISSUE";
         }
 
-        protected void RecordError(MediaItem currentItem, string message)
+        public static void RecordError(MediaItem currentItem, string message)
         {
             currentItem.InnerItem.Editing.BeginEdit();
             currentItem.InnerItem.Fields[ImageCompressionSettings.GetInformationField()].Value = message;
@@ -174,13 +174,13 @@ namespace Sitecore.Foundation.ImageCompression.Services
             currentItem.EndEdit();
         }
 
-        protected void UpdateImageInformation(MediaItem currentItem, string sizeBefore, string sizeAfter, string optimisedBy)
+        public static void UpdateImageInformation(MediaItem currentItem, string sizeBefore, string sizeAfter, string optimisedBy, string targetField)
         {
             currentItem.InnerItem.Editing.BeginEdit();
             string sizeBeforeStr = $"{SizeSuffix(Int64.Parse(sizeBefore))}";
             string sizeAfterStr = $"{SizeSuffix(Int64.Parse(sizeAfter))}";
             var compressionEntry = $"{optimisedBy} | Before: {sizeBeforeStr} | After: {sizeAfterStr}";
-            currentItem.InnerItem.Fields[ImageCompressionSettings.GetInformationField()].Value = compressionEntry;
+            currentItem.InnerItem.Fields[targetField].Value = compressionEntry;
             Diagnostics.Log.Info($"{currentItem.ID} {currentItem.Name} {compressionEntry}", optimisedBy);
             currentItem.InnerItem.Editing.EndEdit();
         }

@@ -5,32 +5,55 @@ Template: "411f24df-bb3e-4741-8dd4-38207b81f5b8"
 Path: /sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/__Standard Values
 DB: master
 SharedFields:
+- ID: "042cf8f1-f8c5-4ea6-b276-8da86663ed5b"
+  Hint: ConvertEndpointKey
+  Value: INSERT YOUR KRAKEN.IO KEY HERE
 - ID: "0b4c8d6b-6960-45f6-ab53-0e6aad664230"
   Hint: EndpointKey
   Value: INSERT YOUR TINY PNG KEY HERE
+- ID: "0fe28c4f-bc97-4fc7-8ae8-2655380e08ec"
+  Hint: ImageCompressionButtonEnabled
+  Type: Checkbox
+  Value: 1
+- ID: "38b0beb1-ab68-4ed6-88ea-8a3c7a517bc0"
+  Hint: ImageConversionInformationField
+  Value: Description
+- ID: "41182b5f-bc24-4f87-8097-15f09af7eec1"
+  Hint: ImageCompressionInformationField
+  Value: Keywords
+- ID: "47428684-081a-45b1-9e96-c3c25f11218f"
+  Hint: ImageCompressionScheduledTaskEnabled
+  Type: Checkbox
+  Value: 1
+- ID: "61508307-2221-4ea8-8402-10f63944f164"
+  Hint: ConvertEndpointSecret
+  Value: INSERT YOUR KRAKEN.IO PNG SECRET  HERE
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+- ID: "c17828c5-895b-4fa2-a824-901431abf451"
+  Hint: ImageCompressionEnabled
+  Type: Checkbox
+  Value: 1
+- ID: "daa3eb20-b28f-4c41-9f18-0ff18c94e735"
+  Hint: ImageConversionEnabled
+  Type: Checkbox
+  Value: 1
+- ID: "e2b62e07-dd53-419f-911f-c56cab99fba9"
+  Hint: ImageConversionButtonEnabled
+  Type: Checkbox
+  Value: 1
 - ID: "e6a3cde0-9913-4304-b114-e318ef685c62"
   Hint: EndpointURL
   Value: "https://api.tinify.com/shrink"
+- ID: "f575dbd2-e50c-460f-8214-a19ed44cf15c"
+  Hint: ConvertEndpointURL
+  Value: "https://api.kraken.io/v1/upload"
 Languages:
 - Language: en
   Versions:
   - Version: 1
     Fields:
-    - ID: "0fe28c4f-bc97-4fc7-8ae8-2655380e08ec"
-      Hint: ImageCompressionButtonEnabled
-      Type: Checkbox
-      Value: 1
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: "20200329T110620:637210767800057991Z"
-    - ID: "41182b5f-bc24-4f87-8097-15f09af7eec1"
-      Hint: ImageCompressionInformationField
-      Value: Keywords
-    - ID: "47428684-081a-45b1-9e96-c3c25f11218f"
-      Hint: ImageCompressionScheduledTaskEnabled
-      Type: Checkbox
-      Value: 1
-    - ID: "c17828c5-895b-4fa2-a824-901431abf451"
-      Hint: ImageCompressionEnabled
-      Type: Checkbox
-      Value: 1

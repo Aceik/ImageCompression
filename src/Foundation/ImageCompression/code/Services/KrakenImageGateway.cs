@@ -8,6 +8,7 @@ using Newtonsoft.Json.Serialization;
 using RestSharp;       
 using Sitecore.Data.Items;
 using Sitecore.Foundation.ImageCompression.Model;
+using Sitecore.Foundation.ImageCompression.Settings;
 using Sitecore.Resources.Media;
 
 namespace Sitecore.Foundation.ImageCompression.Services
@@ -15,7 +16,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
     /// <summary>
     /// Call 
     /// </summary>
-    public class KrakenImageGateway : TinyPngApiGateway, IImageCompressionService
+    public class KrakenImageGateway : IImageNextGenFormatService
     {
         private const string REMOTE_ERROR = "Kraken Remote API caused an error";
         private const string TIMY_CONNETION_ERROR = "Could not download Image from Kraken";
@@ -31,7 +32,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             ShouldContinue = true;
         }
 
-        public override string CompressImage(Item currentItem)
+        public string ConvertImage(Item currentItem)
         {
             var uploadedImage = SendToKrakenForCompression(currentItem);
             if (uploadedImage == null)
@@ -42,7 +43,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
 
         public OptimizeWaitResult SendToKrakenForCompression(Item currentItem)
         {
-            var client = new RestClient("https://api.kraken.io/v1/upload");
+            var client = new RestClient(ImageCompressionSettings.GetConversionApiEndpoint());
             var request = CreateUploadRequest(currentItem, client);
             client.Timeout = 300000;
 
@@ -53,7 +54,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
 
                 if(response.StatusCode != System.Net.HttpStatusCode.OK && response.StatusCode != System.Net.HttpStatusCode.Created)
                 {
-                    Diagnostics.Log.Info($"Image Upload failed {response.StatusCode} | response content: {response.Content}", this);
+                    Diagnostics.Log.Info(message: $"Image Upload failed {response.StatusCode} | response content: {response.Content}", owner: this);
                     ShouldContinue = false;
                     return null;
                 }
@@ -61,25 +62,20 @@ namespace Sitecore.Foundation.ImageCompression.Services
                 if (response.Data != null && string.IsNullOrEmpty(response.Data.KrakedUrl))
                     return null;
 
-                Diagnostics.Log.Info($"Image Uploaded to Tiny PNG {response.Data.KrakedUrl}", this);
+                Diagnostics.Log.Info(message: $"Image Uploaded to Tiny PNG {response.Data.KrakedUrl}", owner: this);
 
                 return response.Data;
             }
             catch (Exception ex)
             {
                 Diagnostics.Log.Error(REMOTE_ERROR, ex);
-                RecordError(currentItem, ex.Message);
+                TinyPngApiGateway.RecordError(currentItem, ex.Message);
             }
             return null;
         }
 
         public new RestRequest CreateUploadRequest(Item currentItem, RestClient client)
         {
-            var ApiKey = "53293608b43b69c7f31f1fb98ea1b830";
-            var ApiSecret = "a6c4a3d7e2d3afb687335a425187e0cd5e9483bc";
-            //apiRequest.Body.Dev = false;
-            //var isSet = apiRequest.Body is IOptimizeSetWaitRequest || apiRequest.Body is IOptimizeSetUploadWaitRequest;
-
             var _serializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCaseExceptDictionaryKeysResolver(),
@@ -100,17 +96,8 @@ namespace Sitecore.Foundation.ImageCompression.Services
                 if (_mediaItem != null)
                 {
                     var imageBytes = ReadMediaStream(_mediaItem);
-
-                    //var requestJson = $"{{\"auth\":{{\"api_key\": \"{ApiKey}\", \"api_secret\": \"{ApiSecret}\"}}, \"wait\":true," +
-                    //    "\"lossy\": true,"+
-                    //    "\"webp\": true"+
-                    //    $"}}";
-
                     var requestJson = JsonConvert.SerializeObject(BuildRequestObject(), _serializerSettings);
-
-                    //var json = JsonConvert.SerializeObject(apiRequest.Body, _serializerSettings);
-                    request.AddParameter("data", requestJson);
-                    //request.AddFile("data", requestJson, "application/json");
+                    request.AddParameter("data", requestJson); 
                     request.AddFile("upload", imageBytes, currentItem.Name, currentItem.Name);
                     request.AddHeader(Name, Value);
                 }
@@ -120,9 +107,12 @@ namespace Sitecore.Foundation.ImageCompression.Services
         
         public UserRequest BuildRequestObject()
         {
+            var ApiKey = ImageCompressionSettings.GetConversionApiEndpointKey();
+            var ApiSecret = ImageCompressionSettings.GetConversionApiSecret();
+
             var requestObj = new UserRequest();
-            requestObj.Authentication.ApiKey = "";
-            requestObj.Authentication.ApiSecret = "";
+            requestObj.Authentication.ApiKey = ApiKey;
+            requestObj.Authentication.ApiSecret = ApiSecret;
             requestObj.WebP = true;
             requestObj.Lossy = true;
             requestObj.Wait = true;
@@ -140,7 +130,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             return buffer;
         }
 
-        public new string DownloadImage(MediaItem currentItem, OptimizeWaitResult img)
+        public string DownloadImage(MediaItem currentItem, OptimizeWaitResult img)
         {
             var client = new RestClient(img.KrakedUrl);
 
@@ -155,12 +145,12 @@ namespace Sitecore.Foundation.ImageCompression.Services
                 string sizeBefore = currentItem.InnerItem.Fields["Size"].Value;
                 UpdateImageFile(currentItem, responseData);
                 string sizeAfter = responseData.Length.ToString();
-                UpdateImageInformation(currentItem, sizeBefore, sizeAfter, ImageCompressionConstants.Messages.OPTIMISED_BY_KRAKEN);
+                TinyPngApiGateway.UpdateImageInformation(currentItem, sizeBefore, sizeAfter, ImageCompressionConstants.Messages.OPTIMISED_BY_KRAKEN, ImageCompressionSettings.GetConversionInformationField());
             }
             catch (Exception ex)
             {
                 Diagnostics.Log.Error(TIMY_CONNETION_ERROR, ex);
-                RecordError(currentItem, ex.Message);
+                TinyPngApiGateway.RecordError(currentItem, ex.Message);
             }
             return "API ISSUE";
         }
@@ -185,9 +175,7 @@ namespace Sitecore.Foundation.ImageCompression.Services
             protected override JsonDictionaryContract CreateDictionaryContract(Type objectType)
             {
                 var contract = base.CreateDictionaryContract(objectType);
-
                 contract.DictionaryKeyResolver = propertyName => propertyName;
-
                 return contract;
             }
         }

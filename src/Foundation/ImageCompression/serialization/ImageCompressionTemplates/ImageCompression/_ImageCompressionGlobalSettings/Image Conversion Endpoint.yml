@@ -1,0 +1,18 @@
+﻿---
+ID: "fd3b42c5-23e5-4f5f-bce2-bb88bb20fa56"
+Parent: "411f24df-bb3e-4741-8dd4-38207b81f5b8"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint
+DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20200402T104838Z

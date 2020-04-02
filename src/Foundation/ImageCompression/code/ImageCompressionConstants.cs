@@ -19,11 +19,6 @@ namespace Sitecore.Foundation.ImageCompression
             public static readonly ID VersionedJpegImageTemplateId = new ID("{C97BA923-8009-4858-BDD5-D8BE5FCCECF7}");
             public static readonly ID VersionedImageTemplateId = new ID("{EB3FB96C-D56B-4AC9-97F8-F07B24BB9BF7}");
         }
-
-        public struct ImageFields
-        {
-            //public static readonly string ImageCompressionEnabled = "ImageCompressionEnabled";
-        }
     
         public struct GlobalSettings
         {
@@ -36,24 +31,16 @@ namespace Sitecore.Foundation.ImageCompression
                 public static readonly string ImageCompressionScheduledTaskEnabled = "ImageCompressionScheduledTaskEnabled";
                 public static readonly string EndpointUrl = "EndpointURL";
                 public static readonly string EndpointKey = "EndpointKey";
+                public static readonly string EndpointSecret = "EndpointSecret";
                 public static readonly string ImageCompressionInformationField = "ImageCompressionInformationField";
 
-
-                
-                //public static readonly string EndpointUsername = "EndpointUsername";
-                //public static readonly string EndpointPassword = "EndpointPassword";
-                //public static readonly string RemoteFontMap = "RemoteFontMap";
-                //public static readonly string RemoteDuplicatesToRemove = "RemoteDuplicatesToRemove";
-                //public static readonly string RemoteFontsToSwitch = "RemoteFontsToSwitch";
-                //public static readonly string ShouldRegenerateOnEverySaveEvent = "ShouldRegenerateOnEverySaveEvent";
-                //public static readonly string ShouldGenerateOnScheduledTask = "ShouldGenerateOnScheduledTask";
-                //public static readonly string CookieExpiration = "CookieExpirationDays";
-                //public static readonly string DeferJSLoadForMilliseconds = "DeferJSLoadForMilliseconds";
-                //public static readonly string DeferCSSLoadForMilliseconds = "DeferCSSLoadForMilliseconds";
-                //public static readonly string DeferFallbackForMilliseconds = "DeferFallbackForMilliseconds";
-
-                //public static readonly string DefaultCriticalWidth = "DefaultCriticalWidth";
-                //public static readonly string DefaultCriticalHeight = "DefaultCriticalHeight";
+                public static readonly string ImageConversionEnabled = "ImageConversionEnabled";
+                public static readonly string ImageConversionButtonEnabled = "ImageConversionButtonEnabled";
+                public static readonly string ImageConversionScheduledTaskEnabled = "ImageConversionScheduledTaskEnabled";
+                public static readonly string ConvertEndpointUrl = "ConvertEndpointURL";
+                public static readonly string ConvertEndpointKey = "ConvertEndpointKey";
+                public static readonly string ConvertEndpointSecret = "ConvertEndpointSecret";
+                public static readonly string ImageConversionInformationField = "ImageConversionInformationField";
             }
 
             public struct Database
