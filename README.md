@@ -4,6 +4,7 @@
 <img src='https://img.shields.io/github/license/Aceik/ImageCompression.svg' />
 <img src='https://img.shields.io/github/languages/code-size/Aceik/ImageCompression.svg' />
 
+
 Compress and Convert the images in your Sitecore media library with the Tiny PNG and Kraken.io. 
 Crunch images to improve you page load times and image payload sizes. 
 Convert images to webp for next generation image format improvements. 
@@ -13,6 +14,8 @@ Convert images to webp for next generation image format improvements.
 This module will connect your media library to imaging APIs that optimise and convert your images. 
 Introduces a button for each image in the Sitecore tab to do this as you go or works via via a scheduled task that checks all images. 
 Shows the before and after results in a Image meta data field, so that you can tell the difference and also know which images have been processed. 
+
+<img src='https://aceiksolutions.files.wordpress.com/2020/04/image-10.png?w=1024' />
 
 ## What does this resolve in regard to Page Speed ?
 
