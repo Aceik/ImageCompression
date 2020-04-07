@@ -41,6 +41,16 @@ You can also opt to turn one of that API connections off if you don't want to us
 - Option 1: via Sitecore Package -- Look for the installable package in the releases of this repo.
 - Option 2: Via Source
 
+2) Setup
+- Choose either to use Tiny PNG or Kraken.IO    (you can use another service but you may need to cut some code and contribute)
+- Adjust settings inside  /sitecore/system/Settings/Foundation/ImageCompression/Image Compression Settings
+- Enter your Tiny PNG Key into the field "Compression End Point Key"
+- Enter your Krarken.IO API KEY and secret into "Convert End Point Key" and "Convert Endpoint Secret"
+- Adjust the other settings as needed. You can:
+  -- turn off either of the above API services
+  -- disable the scheduled tasks for either
+  -- disable either of the buttons in the media panel
+
 ## References and Inspiration
 
 * [Recommend this is used alongside Sitecore Speedy for SXA](https://github.com/Aceik/Sitecore-Speedy)
