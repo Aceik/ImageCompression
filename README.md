@@ -44,8 +44,14 @@ You can also opt to turn one of that API connections off if you don't want to us
 2) Setup
 - Choose either to use Tiny PNG or Kraken.IO    (you can use another service but you may need to cut some code and contribute)
 - Adjust settings inside  /sitecore/system/Settings/Foundation/ImageCompression/Image Compression Settings
-    * Enter your Tiny PNG Key into the field "Compression End Point Key"
-    * Enter your Krarken.IO API KEY and secret into "Convert End Point Key" and "Convert Endpoint Secret"
+    * Tiny PNG settings are availabe under the section "Image Compression Endpoint"
+      - Enter your Tiny PNG Key into the field "Compression End Point Key"
+      - Check the Tiny PNG enpoint field is correct (this should come from standard values)
+      - The field "Compression End Point Secret" is not required for Tiny PNG
+      - See standard settings inside <a href='https://aceiksolutions.files.wordpress.com/2020/04/compression.png?w=500'>screenshot for compression.</a>
+    * Kraken.IO settings are availabe under the section "Image Conversion Endpoint"
+      - Enter your Krarken.IO API KEY and secret into "Convert End Point Key" and "Convert Endpoint Secret"
+      - See standard settings inside <a href='https://aceiksolutions.files.wordpress.com/2020/04/conversion.png?w=500'>screenshot for conversion.</a>
 - Adjust the other settings as needed. You can:
     * turn off either of the above API services
     * disable the scheduled tasks for either
