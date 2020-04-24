@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Command\ImageNextGenConvertRunCommand.cs" />
     <Compile Include="Command\ImageCompressionRunCommand.cs" />
+    <Compile Include="MediaRequestHandler.cs" />
     <Compile Include="MediaRequestHandlerXA.cs" />
     <Compile Include="Model\AllTemplatesSearchResultItem.cs" />
     <Compile Include="Model\ImageUpload.cs" />

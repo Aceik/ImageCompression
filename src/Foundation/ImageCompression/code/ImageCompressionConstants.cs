@@ -10,6 +10,11 @@ namespace Sitecore.Foundation.ImageCompression
             public static readonly string OPTIMISED_BY_KRAKEN = "Optimised by Kraken.io";
         }
 
+        public struct ImageFields
+        {
+            public static readonly string RELATED_IMAGE_FIELD = "Related Compressed File";
+        }
+
         public struct TemplateIDs
         {
             public static readonly ID ImageCompressionPageTemplateId = new ID("{AFB9A38D-7ECA-4C13-848C-F6A5DF08C11E}");
@@ -18,6 +23,7 @@ namespace Sitecore.Foundation.ImageCompression
             public static readonly ID UnversionedImageTemplateId = new ID("{F1828A2C-7E5D-4BBD-98CA-320474871548}");
             public static readonly ID VersionedJpegImageTemplateId = new ID("{C97BA923-8009-4858-BDD5-D8BE5FCCECF7}");
             public static readonly ID VersionedImageTemplateId = new ID("{EB3FB96C-D56B-4AC9-97F8-F07B24BB9BF7}");
+            public static readonly ID RelatedImageTemplateId = new ID("{54A08287-FF0F-4E12-BA13-1A1AA8C825FD}");
         }
     
         public struct GlobalSettings
