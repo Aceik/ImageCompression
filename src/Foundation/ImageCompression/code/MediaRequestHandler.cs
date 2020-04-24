@@ -55,7 +55,7 @@ namespace Sitecore.Foundation.ImageCompression
             if(!string.IsNullOrWhiteSpace(extensionParam))
             {
                 var extensionIsNotWebp = extensionParam != "webp";
-                if (!extensionIsNotWebp)
+                if (extensionIsNotWebp)
                 {
                     return true;
                 }
