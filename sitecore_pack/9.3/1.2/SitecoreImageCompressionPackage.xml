@@ -1,0 +1,184 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>Sitecore Image Compression</PackageName>
+      <Author>Thomas Tyack @ Aceik</Author>
+      <Version>1.2</Version>
+      <Revision />
+      <License />
+      <Comment>All documentation and setup instructions head over to: https://github.com/Aceik/ImageCompression
+1.1 -- Added support for webp format via Kraken.io
+1.2 -- Added support for webp detection if we are in Safari or IE.</Comment>
+      <Attributes />
+      <Readme>All documentation and setup instructions head over to: https://github.com/Aceik/ImageCompression</Readme>
+      <Publisher>Thomas Tyack</Publisher>
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/ImageCompression/Foundation/Foundation.ImageCompression.Commands.config</x-item>
+        <x-item>/App_Config/Include/ImageCompression/Foundation/Foundation.ImageCompression.Serialization.config</x-item>
+        <x-item>/App_Config/Include/ImageCompression/Foundation/Foundation.ImageCompression.Services.config</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Config Files</Name>
+    </xfiles>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/system/Settings/Foundation/ImageCompression/{9B00343F-EA68-4EA6-BE27-301843B18E36}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Settings/Foundation/ImageCompression/Image Compression Settings/{E25A860E-B060-4AAB-9E6B-91546EFB08CC}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Tasks/Commands/ImageCompression/{FAC2FE50-CC2F-4080-944C-249EEEEE0E44}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Tasks/Commands/ImageCompression/Image Compression Syncer/{6809CEFF-8031-4582-BB66-07CF92AA0AC9}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Tasks/Schedules/ImageCompression/{54EFC3AF-9A21-4573-B633-2040E24CCA17}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Tasks/Schedules/ImageCompression/Image Compression Syncer/{764DC047-F89B-4FF0-93F2-29E887F7E70B}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/{411F24DF-BB3E-4741-8DD4-38207B81F5B8}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/{B6EBF11A-B511-49BF-AC0A-ED71E1B39C53}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/EndpointKey/{0B4C8D6B-6960-45F6-AB53-0E6AAD664230}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/EndpointURL/{E6A3CDE0-9913-4304-B114-E318EF685C62}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/ImageCompressionButtonEnabled/{0FE28C4F-BC97-4FC7-8AE8-2655380E08EC}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/ImageCompressionEnabled/{C17828C5-895B-4FA2-A824-901431ABF451}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/ImageCompressionInformationField/{41182B5F-BC24-4F87-8097-15F09AF7EEC1}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/ImageCompressionScheduledTaskEnabled/{47428684-081A-45B1-9E96-C3C25F11218F}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/__Standard Values/{0CEC9F68-9AA2-4EFF-9684-A98C88F8200A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/{411F24DF-BB3E-4741-8DD4-38207B81F5B8}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/{B6EBF11A-B511-49BF-AC0A-ED71E1B39C53}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/EndpointKey/{0B4C8D6B-6960-45F6-AB53-0E6AAD664230}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/EndpointSecret/{E1972A29-A5A4-4929-9061-B891BF4EC97C}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/EndpointURL/{E6A3CDE0-9913-4304-B114-E318EF685C62}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/ImageCompressionButtonEnabled/{0FE28C4F-BC97-4FC7-8AE8-2655380E08EC}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/ImageCompressionEnabled/{C17828C5-895B-4FA2-A824-901431ABF451}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/ImageCompressionInformationField/{41182B5F-BC24-4F87-8097-15F09AF7EEC1}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Compression Endpoint/ImageCompressionScheduledTaskEnabled/{47428684-081A-45B1-9E96-C3C25F11218F}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint/{FD3B42C5-23E5-4F5F-BCE2-BB88BB20FA56}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint/ConvertEndpointKey/{042CF8F1-F8C5-4EA6-B276-8DA86663ED5B}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint/ConvertEndpointSecret/{61508307-2221-4EA8-8402-10F63944F164}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint/ConvertEndpointURL/{F575DBD2-E50C-460F-8214-A19ED44CF15C}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint/ImageConversionButtonEnabled/{E2B62E07-DD53-419F-911F-C56CAB99FBA9}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint/ImageConversionEnabled/{DAA3EB20-B28F-4C41-9F18-0FF18C94E735}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint/ImageConversionInformationField/{38B0BEB1-AB68-4ED6-88EA-8A3C7A517BC0}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/_ImageCompressionGlobalSettings/Image Conversion Endpoint/ImageConversionScheduledTaskEnabled/{B1B18FBB-3954-406B-91D6-3AA79CAE54AB}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/{ED05B568-9EA2-4748-84C4-F1B1D32A58D5}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/RelatedCompressedImage/{54A08287-FF0F-4E12-BA13-1A1AA8C825FD}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/RelatedCompressedImage/Media/{0AF0ABC2-BEC3-40F1-9F35-A73B03B2B343}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Foundation/ImageCompression/RelatedCompressedImage/Media/Related Compressed File/{8A895E21-720B-49EF-AB3E-4B3B80DC9F3E}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Master Items</Name>
+    </xitems>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/RestSharp.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>RestSharp</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/Sitecore.Foundation.ImageCompression.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>DLL</Name>
+    </xfiles>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Contextual Ribbons/Images/Media/ImageCompression/{6DFF27DC-72B6-4B98-A420-FC95D082750E}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Contextual Ribbons/Images/Media/ImageCompression/Compress/{CF5508D0-839D-4DBD-981F-15F0A598E971}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Contextual Ribbons/Images/Media/ImageCompression/NextGenConversion/{EB877C18-8F4C-4D29-ACF7-8FEC5D55C498}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Core Buttons</Name>
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>

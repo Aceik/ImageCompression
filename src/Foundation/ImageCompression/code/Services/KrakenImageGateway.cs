@@ -5,9 +5,11 @@ using Kraken.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using RestSharp;       
+using RestSharp;
+using Sitecore.Configuration;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
-using Sitecore.Foundation.ImageCompression.Model;
+using Sitecore.XA.Foundation.SitecoreExtensions.Extensions;
 using Sitecore.Foundation.ImageCompression.Settings;
 using Sitecore.Resources.Media;
 
@@ -157,17 +159,77 @@ namespace Sitecore.Foundation.ImageCompression.Services
 
         protected void UpdateImageFile(MediaItem currentItem, byte[] responseData)
         {
-            currentItem.BeginEdit();
             Media media = MediaManager.GetMedia(currentItem);
+
             Stream stream = new MemoryStream(responseData);
             try
             {
-                media.SetStream(stream, currentItem.Extension);
+                if (!currentItem.InnerItem.InheritsFrom(ImageCompressionConstants.TemplateIDs.RelatedImageTemplateId))
+                {
+                    InjectTheNeededTemplate(currentItem);
+                }
+
+                Data.Fields.LinkField relatedField = media.MediaData.MediaItem.InnerItem.Fields[ImageCompressionConstants.ImageFields.RELATED_IMAGE_FIELD];
+                if (relatedField != null && relatedField.TargetItem != null)
+                {
+                    var myMedia = new Data.Items.MediaItem(relatedField.TargetItem);
+                    var hiddenWebPMedia = new Media(new MediaData(myMedia));
+                    hiddenWebPMedia.SetStream(stream, currentItem.Extension);
+                }
+                else
+                {
+                    if (stream != null)
+                    {
+                        CreateNewMediaItemWithStreamAndLink(stream, currentItem, relatedField, media);
+                    }
+                }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 return;
-            } // Sitecore may not be ready to accept this sort of image, but it still works
-            currentItem.EndEdit();
+            } // Sitecore may not be ready to accept this sort of image, but it still works despite this exception
+            
+        }
+
+        private void InjectTheNeededTemplate(MediaItem currentItem)
+        {
+            using (new SecurityModel.SecurityDisabler())
+            {
+                Sitecore.Data.Items.TemplateItem baseImageTemplate = currentItem.InnerItem.Template;
+                baseImageTemplate.InnerItem.Editing.BeginEdit();
+                baseImageTemplate.InnerItem["__Base Template"] = $"{baseImageTemplate.InnerItem.Fields["__Base Template"].Value}|{ImageCompressionConstants.TemplateIDs.RelatedImageTemplateId}";
+                baseImageTemplate.InnerItem.Editing.EndEdit();
+            }
+        }
+
+        private void CreateNewMediaItemWithStreamAndLink(Stream stream, MediaItem currentItem, LinkField relatedField, Media originalMedia)
+        {
+            var mediaCreator = new MediaCreator();
+            var options = new MediaCreatorOptions
+            {
+                Versioned = false,
+                IncludeExtensionInItemName = false,
+                Database = Factory.GetDatabase(ImageCompressionConstants.GlobalSettings.Database.Master),
+                Destination = $"/sitecore/media library{currentItem.MediaPath}webp"
+            };
+
+            using (new SecurityModel.SecurityDisabler())
+            {
+                var newHiddenMedia = mediaCreator.CreateFromStream(stream, currentItem.Name + ".webp", options);
+
+                newHiddenMedia.Editing.BeginEdit();
+                newHiddenMedia.Appearance.Hidden = true;
+                newHiddenMedia.Editing.EndEdit();
+
+                currentItem.BeginEdit();
+                relatedField.Value = string.Empty; //https://sitecore.stackexchange.com/questions/4104/how-to-programatically-update-a-general-link-field-in-a-custom-user-profille
+                new LinkField(originalMedia.MediaData.MediaItem.InnerItem.Fields[ImageCompressionConstants.ImageFields.RELATED_IMAGE_FIELD])
+                {
+                    LinkType = "internal",
+                    TargetID = newHiddenMedia.ID
+                };
+                currentItem.EndEdit();
+            }
         }
 
         internal class CamelCaseExceptDictionaryKeysResolver : CamelCasePropertyNamesContractResolver
