@@ -16,8 +16,7 @@ namespace Sitecore.Foundation.ImageCompression
             {
                 return mediaRequestHandlerArgs.Result;
             }
-            var media = new MediaRequestHandler().DetermineImageResponse(mediaRequestHandlerArgs.Context, mediaRequestHandlerArgs.Request, mediaRequestHandlerArgs.Media);
-            return DoProcessRequest(mediaRequestHandlerArgs.Context, mediaRequestHandlerArgs.Request, media);
+            return new MediaRequestHandler().DoProcessRequest(mediaRequestHandlerArgs.Context, mediaRequestHandlerArgs.Request, mediaRequestHandlerArgs.Media);
         }
     }
 }
