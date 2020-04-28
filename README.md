@@ -53,11 +53,11 @@ You can also opt to turn one of that API connections off if you don't want to us
       - Enter your Krarken.IO API KEY and secret into "Convert End Point Key" and "Convert Endpoint Secret"
       - See standard settings inside <a href='https://aceiksolutions.files.wordpress.com/2020/04/conversion.png?w=500'>screenshot for conversion.</a>
 	  - For WEBP Support we need to replace the default Sitecore image handler. This madness is simply due to Safari and IE not supporting webp.
-		-- To achieve this we simply sniff out the Browser Header in the code and if its Safari or IE we send back the original JPEG. 
-		-- IF the browser is Chrome or Firefox we can send back the WEBP images. Which have a lot better compression.
-		-- A) Locate this entry in web.conf -> <add verb="*" path="sitecore_media.ashx" type="Sitecore.Resources.Media.MediaRequestHandler, Sitecore.Kernel" name="Sitecore.MediaRequestHandler" />
-		-- B) For Non SXA installations replace with -> <add verb="*" path="sitecore_media.ashx" type="Sitecore.Foundation.ImageCompression.MediaRequestHandler, Sitecore.Foundation.ImageCompression" name="Sitecore.MediaRequestHandler" />
-		-- B) For SXA installations replace with -> <add verb="*" path="sitecore_media.ashx" type="Sitecore.Foundation.ImageCompression.MediaRequestHandlerXA, Sitecore.Foundation.ImageCompression" name="Sitecore.MediaRequestHandler" />
+		- To achieve this we simply sniff out the Browser Header in the code and if its Safari or IE we send back the original JPEG. 
+		- IF the browser is Chrome or Firefox we can send back the WEBP images. Which have a lot better compression.
+		- A) Locate this entry in web.conf -> `<add verb="*" path="sitecore_media.ashx" type="Sitecore.Resources.Media.MediaRequestHandler, Sitecore.Kernel" name="Sitecore.MediaRequestHandler" />`
+		- B) For Non SXA installations replace with -> `<add verb="*" path="sitecore_media.ashx" type="Sitecore.Foundation.ImageCompression.MediaRequestHandler, Sitecore.Foundation.ImageCompression" name="Sitecore.MediaRequestHandler" />`
+		- B) For SXA installations replace with -> `<add verb="*" path="sitecore_media.ashx" type="Sitecore.Foundation.ImageCompression.MediaRequestHandlerXA, Sitecore.Foundation.ImageCompression" name="Sitecore.MediaRequestHandler" />`
 - Adjust the other settings as needed. You can:
     * turn off either of the above API services
     * disable the scheduled tasks for either
