@@ -69,6 +69,7 @@
     <Content Include="App_Config\Include\ImageCompression\Foundation\Foundation.ImageCompression.Serialization.config" />
     <Content Include="App_Config\Include\ImageCompression\Foundation\Foundation.ImageCompression.Services.config" />
     <Compile Include="Model\KrakenHttp\Model\Authenaaatication.cs" />
+    <Content Include="App_Config\Include\ImageCompression\Foundation\Foundation.ImageCompression.MediaSupport.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
