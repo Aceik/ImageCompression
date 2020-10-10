@@ -41,7 +41,12 @@ You can also opt to turn one of that API connections off if you don't want to us
 - Option 1: via Sitecore Package -- Look for the installable package in the releases of this repo.
 - Option 2: Via Source
 
-2) Setup
+2) Media Library Template Inheritance
+- This module adds a new field to your image template. This requires us to inherit from a newly added template that the module installs. 
+- Locate the Image template inside Sitecore /sitecore/templates/System/Media/Unversioned/Image
+- Make it inherit the following template  /sitecore/templates/Foundation/ImageCompression/RelatedCompressedImage
+
+3) Update API Settings and Web.config
 - Choose either to use Tiny PNG or Kraken.IO    (you can use another service but you may need to cut some code and contribute)
 - Adjust settings inside  /sitecore/system/Settings/Foundation/ImageCompression/Image Compression Settings
     * Tiny PNG settings are availabe under the section "Image Compression Endpoint"
