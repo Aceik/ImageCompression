@@ -19,7 +19,7 @@ Shows the before and after results in a Image meta data field, so that you can t
 
 ## What does this resolve in regard to Page Speed ?
 
-This module addresses the image optimisation component of page speed. The aim is to optimise your images to sizes that google will appreciate. Googlie also now recommends using a next-gen image format such as webp, this module also allows you to convert your existing images to that format and to meet the Google Page Speed recommendation. 
+This module addresses the image optimisation component of page speed. The aim is to optimise your images to sizes that google will appreciate. Google also now recommends using a next-gen image format such as webp, this module also allows you to convert your existing images to that format and to meet the Google Page Speed recommendation. 
 
 ## Is it easy to use ?
 
